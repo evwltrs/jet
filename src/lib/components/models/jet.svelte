@@ -4,13 +4,14 @@ Command: npx @threlte/gltf@2.0.3 /Users/1nf/code/jet/static/models/jet.glb --roo
 -->
 
 <script>
-	import { Group } from 'three'
 	import { T, forwardEventHandlers } from '@threlte/core'
-	import { useGltf } from '@threlte/extras'
+	import { useGltf, useTexture } from '@threlte/extras'
+	import { AddEquation, CustomBlending, Group, LessEqualDepth, OneFactor } from 'three'
 
 	export const ref = new Group()
 
 	const gltf = useGltf('/models/jet.glb')
+	const map = useTexture('textures/energy-beam-opacity.png')
 
 	const component = forwardEventHandlers()
 </script>
@@ -19,7 +20,7 @@ Command: npx @threlte/gltf@2.0.3 /Users/1nf/code/jet/static/models/jet.glb --roo
 	{#await gltf}
 		<slot name="fallback" />
 	{:then gltf}
-		<T.Group scale={0.025}>
+		<T.Group scale={0.025} rotation={[0, -Math.PI * 1, 0]} position={[1, 0, 0]}>
 			<T.Mesh
 				castShadow
 				receiveShadow
@@ -56,6 +57,19 @@ Command: npx @threlte/gltf@2.0.3 /Users/1nf/code/jet/static/models/jet.glb --roo
 				material={gltf.materials['f22a-airframe']}
 				rotation={[Math.PI / 2, 0, 0]}
 			/>
+			{#await map then mapValue}
+				<T.Mesh position={[740, -60, -1350]} rotation.x={Math.PI * 0.5}>
+					<T.CylinderGeometry args={[70, 25, 1600, 15]} />
+					<T.MeshBasicMaterial
+						color={[1.0, 0.4, 0.02]}
+						transparent
+						alphaMap={mapValue}
+						blending={CustomBlending}
+						blendDst={OneFactor}
+						blendEquation={AddEquation}
+					/>
+				</T.Mesh>
+			{/await}
 		</T.Group>
 	{:catch error}
 		<slot name="error" {error} />
