@@ -21,7 +21,7 @@
 
 	let planeRef
 	let sphereRef
-	let spaceShipRef
+	let jetRef
 
 	const { scene, camera, renderer } = useThrelte()
 	let intersectionPoint
@@ -69,13 +69,13 @@
 
 		if (envMapRT) envMapRT.dispose()
 
-		spaceShipRef.visible = false
+		jetRef.visible = false
 		scene.background = null
 		envMapRT = pmrem.fromScene(scene, 0, 0.1, 1000)
 		scene.background = new Color('#598889').multiplyScalar(0.05)
-		spaceShipRef.visible = true
+		jetRef.visible = true
 
-		spaceShipRef.traverse((child) => {
+		jetRef.traverse((child) => {
 			if (child?.material?.envMapIntensity) {
 				child.material.envMap = envMapRT.texture
 				child.material.envMapIntensity = 100
@@ -124,7 +124,7 @@
 
 <Stars />
 
-<Jet bind:ref={spaceShipRef} position={[0, translY, 0]} rotation={[angleZ, 0, angleZ, 'ZXY']} />
+<Jet bind:ref={jetRef} position={[0, translY, 0]} rotation={[angleZ, 0, angleZ, 'ZXY']} />
 
 <T.Mesh renderOrder={2} bind:ref={planeRef} visible={false}>
 	<T.PlaneGeometry args={[20, 20]} />
