@@ -30,16 +30,22 @@
 {/if}
 <div class="relative h-full antialiased">
 	<div class="absolute left-10 top-10 text-white">
-		<div class="pb-4 pl-2 text-2xl font-bold">Lockheed Martin Corporation</div>
-		<div class="text-9xl font-black">F-22A</div>
-		<div class="text-8xl font-semibold">Raptor</div>
-		<div class="pl-2 pt-4 text-xl font-semibold">
+		<div class="pb-4 md:pl-2 text-xl md:text-2xl font-bold">Lockheed Martin Corporation</div>
+		<div class="text-6xl md:text-9xl font-black">F-22A</div>
+		<div class="text-5xl md:text-8xl font-semibold">Raptor</div>
+		<div class="md:pl-2 pt-4 text-md md:text-xl font-semibold">
 			A twin engine, all-weather, stealth air-superiority fighter aircraft.
 		</div>
 	</div>
 	<div class="absolute bottom-5 right-5 space-x-2">
 		<Button href="https://github.com/evwltrs/jet"><Github /></Button>
 		<Button href="https://1nf.me"><Globe /></Button>
+	</div>
+	<div class="absolute bottom-5 left-5 space-x-2">
+		<p class="text-gray-400 text-xs pb-4 md:hidden">Hold and drag to manuever the plane</p>
+		<p class="text-gray-400 text-md pb-2 hidden md:block">Move mouse to manuever the plane.
+		Click and drag to move the camera.
+		</p>
 	</div>
 	<Canvas>
 		<Scene />

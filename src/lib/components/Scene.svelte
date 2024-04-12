@@ -29,6 +29,7 @@
 	let translAccelleration = 0
 	let angleZ = 0
 	let angleAccelleration = 0
+	let mobile = false
 
 	let pmrem = new PMREMGenerator(renderer)
 	let envMapRT
@@ -87,6 +88,10 @@
 	})
 
 	onMount(() => {
+		if (window.innerWidth < 768) {
+			mobile = true
+		}
+
 		setupEffectComposer()
 
 		const raycaster = new Raycaster()
@@ -115,8 +120,10 @@
 	})
 </script>
 
-<T.PerspectiveCamera makeDefault position={[-9, 4, 12]} fov={20}>
-	<OrbitControls enableDamping target={[0, 0, 0]} />
+<T.PerspectiveCamera makeDefault position={[-9, 4, 12]} fov={mobile ? 40 : 20}>
+	{#if !mobile}
+		<OrbitControls enableDamping target={[0, 0, 0]} />
+	{/if}
 </T.PerspectiveCamera>
 
 <T.DirectionalLight intensity={1.8} position={[0, 10, 0]} castShadow shadow.bias={-0.0001} />
