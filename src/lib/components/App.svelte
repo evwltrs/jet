@@ -30,10 +30,10 @@
 {/if}
 <div class="relative h-full antialiased">
 	<div class="absolute left-10 top-10 text-white">
-		<div class="pb-4 md:pl-2 text-xl md:text-2xl font-bold">Lockheed Martin Corporation</div>
-		<div class="text-6xl md:text-9xl font-black">F-22A</div>
-		<div class="text-5xl md:text-8xl font-semibold">Raptor</div>
-		<div class="md:pl-2 pt-4 text-md md:text-xl font-semibold">
+		<div class="pb-4 text-xl font-bold md:pl-2 md:text-2xl">Lockheed Martin Corporation</div>
+		<div class="text-6xl font-black md:text-9xl">F-22A</div>
+		<div class="text-5xl font-semibold md:text-8xl">Raptor</div>
+		<div class="text-md pt-4 font-semibold md:pl-2 md:text-xl">
 			A twin engine, all-weather, stealth air-superiority fighter aircraft.
 		</div>
 	</div>
@@ -41,10 +41,13 @@
 		<Button href="https://github.com/evwltrs/jet"><Github /></Button>
 		<Button href="https://1nf.me"><Globe /></Button>
 	</div>
-	<div class="absolute bottom-5 left-5 space-x-2">
-		<p class="text-gray-400 text-xs pb-4 md:hidden">Hold and drag to manuever the plane</p>
-		<p class="text-gray-400 text-md pb-2 hidden md:block">Move mouse to manuever the plane.
-		Click and drag to move the camera.
+	<div class="absolute bottom-5 left-1 flex flex-col space-x-2 md:left-5">
+		<p class="text-md hidden pb-2 text-gray-400 md:inline-block">
+			Move mouse to manuever the plane. Click and drag to move the camera.
+		</p>
+		<p class="pb-2 text-xs text-gray-400 md:hidden">Hold and drag to manuever the plane</p>
+		<p class="text-[8px] text-gray-400 md:text-xs">
+			3D model by <a href="https://sketchfab.com/bohmerang" class="underline">Bohmerang</a>
 		</p>
 	</div>
 	<Canvas>
